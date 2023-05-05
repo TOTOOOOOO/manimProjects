@@ -1,6 +1,6 @@
 # visualization of dfs and lowlink algorithms
 
-link for youtube videos:
+# link for youtube videos:
 DFS:  https://www.youtube.com/watch?v=lCNLpEre1Co    
 lowLink: https://www.youtube.com/watch?v=pihEccXqyPU
 
