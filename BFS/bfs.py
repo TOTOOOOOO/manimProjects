@@ -64,7 +64,14 @@ class animation(Scene):
 
         # print(graph)
         bfs_full_order = bfs(graph,0)
-        
+
+        scale_factor = 1
+
+        for element in bfs_full_order:
+            if isinstance(element, int):
+                surround_circle = self.highlight_node(graph, element, scale_factor= scale_factor, run_time=1)
+            else:
+                last_edge = self.sharpie_edge(edge_dict, element[0] , element[1], color= RED)    
 
     def highlight_node_red(self,graph, element,color= RED, scale_factor = 1):
         node = graph[element]
@@ -89,7 +96,7 @@ class animation(Scene):
         edge = edge_dict[(u,v)]
         line = Line(edge.get_start(), edge.get_end())
         line.set_stroke(width=16 * scale_factor)
-        line.set_color(GREEN)
+        line.set_color(color)
 
         self.play(
             Create(line),
@@ -131,13 +138,12 @@ class animation(Scene):
         node_9 = GraphNode('9', position= LEFT * 3.5 + DOWN * 3.0, radius=radius, scale=scale)
         node_10 = GraphNode('10', position= RIGHT * 2.0 + DOWN * 3.0, radius=radius, scale=scale)
         node_11 = GraphNode('11', position= RIGHT * 4.0 + DOWN * 3.0, radius=radius, scale=scale)
-        # node_12 = GraphNode('12', position= RIGHT * 4.0 + DOWN 2.0, radius=radius, scale=scale)
 
         edges[(0,1)] = node_0.connect(node_1)
         edges[(0,2)] = node_0.connect(node_2)
         edges[(0,3)] = node_0.connect(node_3)
         edges[(1,4)] = node_1.connect(node_4)
-        edges[(3,5)] = node_1.connect(node_5)
+        edges[(1,5)] = node_1.connect(node_5)
         edges[(3,6)] = node_3.connect(node_6)
         edges[(3,7)] = node_3.connect(node_7)
         edges[(4,8)] = node_4.connect(node_8)
